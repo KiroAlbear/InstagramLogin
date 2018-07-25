@@ -69,21 +69,20 @@ class InstagramDialog(context: Context?, listner: AuthenticationListner) : Dialo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.setContentView(R.layout.auth_dialog)
+
+    
         initWebview()
 
-       // var connection = HttpCon(httpAuth).execute()
 
+    }
+
+    fun initWebview() {
         webview = findViewById(R.id.insta_webview)
-
-
-//        var connecthttp = HttpCon(httpAuth, this)
-//        connecthttp.execute()
-
-
 
         var settings = webview!!.settings
         settings.javaScriptEnabled = true
-        webview!!.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY)
+        webview!!.setScrollBarStyle(WebView.SCROLLBARS_INSIDE_OVERLAY)
+
 
         var display:Display = window.windowManager.defaultDisplay
 
@@ -118,12 +117,6 @@ class InstagramDialog(context: Context?, listner: AuthenticationListner) : Dialo
 
         }
         webview!!.loadUrl(httpAuth)
-
-
-    }
-
-
-    fun initWebview() {
 
 
     }

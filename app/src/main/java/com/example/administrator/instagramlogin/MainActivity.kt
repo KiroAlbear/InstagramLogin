@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import com.example.administrator.instagramlogin.ViewModel.AuthenticationListner
 import com.example.administrator.instagramlogin.ViewModel.GetData
 import com.example.administrator.instagramlogin.ViewModel.InstagramDialog
@@ -54,6 +55,9 @@ class MainActivity : AppCompatActivity() ,AuthenticationListner{
             instagramdialog = InstagramDialog(this,this)
             instagramdialog!!.setCancelable(true)
             instagramdialog!!.show()
+
+         var window = instagramdialog!!.window
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
 
         })
 
