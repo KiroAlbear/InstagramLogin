@@ -5,19 +5,44 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.example.administrator.instagramlogin.ViewModel.AuthenticationListner
+import com.example.administrator.instagramlogin.ViewModel.GetData
 import com.example.administrator.instagramlogin.ViewModel.InstagramDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() ,AuthenticationListner{
 
-    private var instagramlogin: InstagramDialog? = null
+
+    override fun DataRecieved(data: MutableMap<String, String>) {
+
+        var text:String = ""
+        for (i in data)
+        {
+            if(i.key=="profile_picture")
+            continue
+            else
+                text+=i.key+":   "+i.value+"\n"
+        }
+        testtext.text=text
+
+
+
+}
+
+
+    private var instagramdialog: InstagramDialog? = null
+
     override fun OnCodeRecieved(auth_token: String) {
         if(auth_token==null)
         {
             return
         }
         else
+        {
             Log.d("accetoken", auth_token)
+            var getdata = GetData(this)
+            getdata.getUserinfo(auth_token)
+
+        }
 
     }
 
@@ -26,10 +51,13 @@ class MainActivity : AppCompatActivity() ,AuthenticationListner{
         setContentView(R.layout.activity_main)
 
         log_inbutton.setOnClickListener(View.OnClickListener {
-            instagramlogin = InstagramDialog(this,this)
-            instagramlogin!!.setCancelable(true)
-            instagramlogin!!.show()
+            instagramdialog = InstagramDialog(this,this)
+            instagramdialog!!.setCancelable(true)
+            instagramdialog!!.show()
+
         })
+
+
 
     }
 }
