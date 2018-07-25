@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">InstagramLogin</string>
+    <string name="CLIENT_ID">3fb57bf3f1f54bb2be3b5d696d9e2e5c</string>
+    <string name="Client_Secret"> 9bd94e1966d94625a84bf8c539d8a30f</string>
+
+
+</resources>
